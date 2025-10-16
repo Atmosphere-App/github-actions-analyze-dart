@@ -13,6 +13,9 @@ inputs:
     default: ./
   line-length:
     description: 'The maximum line length. Optional. The formatter will use its default: `80`'
+  no-use-aot-snapshot:
+    description: 'Add the --no-use-aot-snapshot flag to dart analyze. Optional. Default: `false`'
+    default: false
 runs:
   using: 'node20'
   main: 'dist/index.js'

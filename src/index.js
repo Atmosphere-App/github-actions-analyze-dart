@@ -38,6 +38,9 @@ async function analyze(workingDirectory) {
   };
 
   const args = ['--no-fatal-warnings', '--format', 'machine'];
+  if (core.getInput('no-use-aot-snapshot') === 'true') {
+    args.push('--no-use-aot-snapshot');
+  }
   args.push('.');
 
   await exec.exec('dart analyze', args, options);
@@ -101,7 +104,7 @@ async function format(workingDirectory) {
   args.push('.');
 
   await exec.exec('dart', args, options);
-  
+
   let warningCount = 0;
   const lines = output.trim().split(/\r?\n/);
 

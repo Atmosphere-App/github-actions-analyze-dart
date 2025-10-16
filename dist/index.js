@@ -27507,7 +27507,7 @@ module.exports = parseParams
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __nccwpck_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -27521,7 +27521,7 @@ module.exports = parseParams
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		var threw = true;
 /******/ 		try {
@@ -27530,16 +27530,16 @@ module.exports = parseParams
 /******/ 		} finally {
 /******/ 			if(threw) delete __webpack_module_cache__[moduleId];
 /******/ 		}
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat */
-/******/ 	
+/******/
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
-/******/ 	
+/******/
 /************************************************************************/
 var __webpack_exports__ = {};
 const core = __nccwpck_require__(7484);
@@ -27582,6 +27582,9 @@ async function analyze(workingDirectory) {
   };
 
   const args = ['--no-fatal-warnings', '--format', 'machine'];
+  if (core.getInput('no-use-aot-snapshot') === 'true') {
+    args.push('--no-use-aot-snapshot');
+  }
   args.push('.');
 
   await exec.exec('dart analyze', args, options);
@@ -27645,7 +27648,7 @@ async function format(workingDirectory) {
   args.push('.');
 
   await exec.exec('dart', args, options);
-  
+
   let warningCount = 0;
   const lines = output.trim().split(/\r?\n/);
 
