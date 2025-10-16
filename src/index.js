@@ -109,7 +109,7 @@ async function format(workingDirectory) {
   const lines = output.trim().split(/\r?\n/);
 
   for (const line of lines) {
-    if (!line.endsWith('.dart')) continue;
+    if (!line.endsWith('.dart') || line.endsWith('.freezed.dart') || line.endsWith('.g.dart')) continue;
     const file = line.substring(8); // Remove the "Changed " prefix
 
     console.log(`::warning file=${file}::Invalid format. For more details, see https://dart.dev/guides/language/effective-dart/style#formatting`);

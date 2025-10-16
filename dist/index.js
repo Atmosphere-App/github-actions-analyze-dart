@@ -27507,7 +27507,7 @@ module.exports = parseParams
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/
+/******/ 	
 /******/ 	// The require function
 /******/ 	function __nccwpck_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -27521,7 +27521,7 @@ module.exports = parseParams
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/
+/******/ 	
 /******/ 		// Execute the module function
 /******/ 		var threw = true;
 /******/ 		try {
@@ -27530,16 +27530,16 @@ module.exports = parseParams
 /******/ 		} finally {
 /******/ 			if(threw) delete __webpack_module_cache__[moduleId];
 /******/ 		}
-/******/
+/******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat */
-/******/
+/******/ 	
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
-/******/
+/******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 const core = __nccwpck_require__(7484);
@@ -27653,7 +27653,7 @@ async function format(workingDirectory) {
   const lines = output.trim().split(/\r?\n/);
 
   for (const line of lines) {
-    if (!line.endsWith('.dart')) continue;
+    if (!line.endsWith('.dart') || line.endsWith('.freezed.dart') || line.endsWith('.g.dart')) continue;
     const file = line.substring(8); // Remove the "Changed " prefix
 
     console.log(`::warning file=${file}::Invalid format. For more details, see https://dart.dev/guides/language/effective-dart/style#formatting`);
